@@ -83,10 +83,11 @@ for tag in TAGS :
 if uptime2() > 600:
    boot_id=bootid()
    preexisting=False
-   with open("ha_start.bootstate",'r') as f:
-        pastboot=f.readline()
-        if (boot_id == pastboot ) :
-            preexisting=True 
+   if os.path.exists("ha_start.bootstate"):
+      with open("ha_start.bootstate",'r') as f:
+           pastboot=f.readline()
+           if (boot_id == pastboot ) :
+               preexisting=True 
    if (preexisting==False):
        for tag in ( "OnBoot", "OnBoot2" ) :
            print "Tag: %s" % ( tag)
