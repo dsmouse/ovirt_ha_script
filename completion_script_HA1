@@ -1,0 +1,10 @@
+#!/bin/bash
+set +x 
+echo It is running me
+sleep 5
+echo Testing local network gateway 
+while ! ping -w 5  -c 2 10.1.2.1 ; do sleep 20 ; done
+echo Testing site outbound gateway 
+while ! ping -w 5  -c 2 10.1.5.1 ; do sleep 20 ; done
+echo Testing PDC up- houses dhcp 
+while ! ping -w 5  -c 2 10.1.2.58 ; do sleep 20 ; done
